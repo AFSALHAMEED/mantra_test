@@ -15,7 +15,7 @@ export const HeroSection = ({
 }) => {
   return (
     <div>
-      <section className="flex flex-col  pb-48 md:pl-16 lg:pl-32 text-sm text-white max-md:px-2 bg-[url('https://ibb.co/WNG6rWQY')] bg-cover bg-center">
+      <section className="flex flex-col  pb-48 md:pl-16 lg:pl-32 text-sm text-white max-md:px-2 bg-[url('/src/assets/heroImage.png')] bg-cover bg-center">
         <Navbar
           setIsOpenModal={setIsOpenModal}
           userDetails={userDetails}
@@ -33,7 +33,6 @@ export const HeroSection = ({
             Getaway Destination
           </h1>
         </div>
-
         <button
           className="bg-white text-slate-800 hover:bg-gray-300 text-nowrap px-8 md:px-10 h-12 mr-2 rounded-full font-medium transition w-max mt-6 cursor-pointer"
           onClick={() => {
