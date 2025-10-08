@@ -61,9 +61,9 @@ export const Register = () => {
   return (
     <div className="w-full">
       <div className="flex   h-screen w-full gap-7">
-        <div className="w-full hidden  md:grid  md:grid-cols-3 lg:grid-cols-4 bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/leftSideImage.png')] bg-cover bg-center"></div>
+        <div className="w-full hidden  lg:grid  md:grid-cols-3 lg:grid-cols-4 bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/leftSideImage.png')] bg-cover bg-center"></div>
 
-        <div className="w-full flex md:grid-cols-9 lg:grid-cols-8 justify-center  items-center mr-3 md:mr-0">
+        <div className="w-full flex md:grid-cols-9 lg:grid-cols-8 justify-center  items-center m-6 mr-3 lg:m-0 lg:mr-7">
           <form
             className="w-full flex flex-col items-center lg:max-w-3xl mx-auto"
             onSubmit={handleSubmit(onSubmit)}

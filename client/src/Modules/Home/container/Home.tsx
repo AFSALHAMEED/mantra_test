@@ -21,7 +21,7 @@ export const Home = () => {
     onLogout,
   } = useHome();
   return (
-    <div>
+    <div className="">
       <HeroSection
         setIsOpenModal={setIsOpenModal}
         userDetails={context?.AppState!}
@@ -30,7 +30,6 @@ export const Home = () => {
       />
       <Services />
       <Gallery />
-      <About />
       <Footer />
       {isOpenModal && (
         <Login
@@ -45,6 +44,7 @@ export const Home = () => {
           isOpenModal={openBookModal}
           setOpenBookModal={setOpenBookModal}
           handleBooking={handleBooking}
+          userDetails={context?.AppState!}
         />
       )}
     </div>

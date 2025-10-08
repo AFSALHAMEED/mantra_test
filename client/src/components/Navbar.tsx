@@ -14,10 +14,8 @@ export const Navbar = ({
     { name: "Home", path: "/" },
     { name: "Services", path: "#services" },
     { name: "Gallery", path: "#gallery" },
-    { name: "About", path: "#about" },
   ];
   const { pathname } = useLocation();
-  console.log("pathname: ", pathname);
   const [isScrolled, setIsScrolled] = useState<Boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
 
@@ -33,7 +31,7 @@ export const Navbar = ({
 
   return (
     <nav
-      className={`fixed top-0 left-0  w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
+      className={`fixed top-0  w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
         isScrolled
           ? "bg-white/80 shadow-md text-gray-700 backdrop-blur-lg py-3 md:py-4"
           : `py-4 md:py-6 ${
@@ -144,7 +142,18 @@ export const Navbar = ({
           </a>
         ))}
 
-        <button className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500">
+        <button
+          className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500"
+          onClick={() => {
+            if (userDetails.name) {
+              logout();
+              setIsMenuOpen(false);
+            } else {
+              setIsOpenModal(true);
+              setIsMenuOpen(false);
+            }
+          }}
+        >
           {userDetails.name ? "Logout" : "Login"}
         </button>
       </div>

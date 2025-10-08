@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { UseMutationResult } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Modal from "react-responsive-modal";
@@ -18,18 +18,32 @@ type props = {
   isOpenModal: boolean;
   setOpenBookModal: React.Dispatch<React.SetStateAction<boolean>>;
   handleBooking: UseMutationResult<any, Error, bookValues, unknown>;
+  userDetails: { name: string; email: string; isAdmin: boolean };
 };
 
 export const BookModal = ({
   isOpenModal,
   setOpenBookModal,
   handleBooking,
+  userDetails,
 }: props) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
+    setValue,
   } = useForm<bookValues>();
+
+  const checkInDate = watch("checkInDate");
+  const checkOutDate = watch("checkOutDate");
+  const today = new Date().toISOString().split("T")[0];
+
+  useEffect(() => {
+    if (checkOutDate && checkInDate && checkOutDate < checkInDate) {
+      setValue("checkOutDate", "");
+    }
+  }, [checkInDate, checkOutDate, setValue]);
   const onSubmit: SubmitHandler<bookValues> = async (data) => {
     const {
       checkInDate,
@@ -76,7 +90,7 @@ export const BookModal = ({
           className="w-full text-center  px-8 "
         >
           <h1 className="text-gray-900 text-3xl mt-10 font-medium">Booking</h1>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid  grid-cols-1 md:grid-cols-2 gap-2">
             <div>
               <div
                 className={` flex items-center mt-6 w-full bg-white border border-gray-300/80 h-12 rounded-full overflow-hidden pl-6 gap-2 ${
@@ -128,6 +142,8 @@ export const BookModal = ({
                         message: "Invalid email format",
                       },
                     })}
+                    disabled
+                    value={userDetails.email}
                     aria-invalid={errors.email ? "true" : "false"}
                     placeholder="Email"
                     className={`border-none outline-none ring-0 `}
@@ -141,7 +157,7 @@ export const BookModal = ({
               )}
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid  grid-cols-1 md:grid-cols-2 gap-2">
             <div>
               <div
                 className={` flex items-center mt-6 w-full bg-white border border-gray-300/80 h-12 rounded-full overflow-hidden pl-6 gap-2 ${
@@ -197,7 +213,7 @@ export const BookModal = ({
               )}
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid  grid-cols-1 md:grid-cols-2 gap-2">
             <div>
               <div
                 className={` flex items-center mt-6 w-full bg-white border border-gray-300/80 h-12 rounded-full overflow-hidden pl-6 gap-2 ${
@@ -259,7 +275,7 @@ export const BookModal = ({
               )}
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid  grid-cols-1 md:grid-cols-2 gap-2">
             <div>
               <div
                 className={` flex items-center mt-6 w-full bg-white border border-gray-300/80 h-12 rounded-full overflow-hidden pl-6 gap-2 ${
@@ -276,6 +292,7 @@ export const BookModal = ({
                       message: "Check in date is required",
                     },
                   })}
+                  min={today}
                   aria-invalid={errors.checkInDate ? "true" : "false"}
                   placeholder="Check in Date"
                   className={`border-none outline-none ring-0 w-full pr-6`}
@@ -302,7 +319,12 @@ export const BookModal = ({
                       value: true,
                       message: "Check out date is required",
                     },
+                    validate: (value) =>
+                      !checkInDate ||
+                      value >= checkInDate ||
+                      "Check-out must be after check-in",
                   })}
+                  min={checkInDate || today}
                   aria-invalid={errors.checkOutDate ? "true" : "false"}
                   placeholder="Guest"
                   className={`border-none outline-none ring-0 w-full pr-6`}

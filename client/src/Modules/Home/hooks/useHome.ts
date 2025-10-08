@@ -1,6 +1,6 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import React, { useContext, useEffect, useState } from "react";
-import { bookResort, login, logoutUser, register } from "./home.api";
+import { useMutation } from "@tanstack/react-query";
+import React, { useContext, useState } from "react";
+import { bookResort, login, register } from "./home.api";
 import { AppContext } from "../../../context/AppScope";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -49,8 +49,7 @@ export const useHome = () => {
   });
   const handleBooking = useMutation({
     mutationFn: bookResort,
-    onSuccess: (data) => {
-      console.log("data: ", data);
+    onSuccess: () => {
       toast.success("Booked Successfully");
       setOpenBookModal(false);
     },
@@ -58,35 +57,6 @@ export const useHome = () => {
       console.log({ error });
     },
   });
-
-  const { refetch: logout, isSuccess } = useQuery({
-    queryKey: ["logout"],
-    queryFn: logoutUser,
-    enabled: false,
-  });
-
-  useEffect(() => {
-    if (isSuccess) {
-      console.log(context);
-
-      if (context?.setAppState) {
-        console.log("ee");
-
-        context.setAppState({
-          name: "",
-          email: "",
-          isAdmin: false,
-        });
-      }
-      localStorage.clear();
-      navigate("/");
-    }
-  }, [isSuccess]);
-  console.log("isSuccess: ", isSuccess);
-
-  const onLogout = () => {
-    logout();
-  };
 
   return {
     userLogin,
@@ -100,6 +70,6 @@ export const useHome = () => {
     setOpenBookModal,
     handleBooking,
     navigate,
-    onLogout,
+    onLogout: context?.onLogout!,
   };
 };

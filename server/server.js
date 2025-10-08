@@ -8,7 +8,8 @@ import bookRouter from "./routes/bookingRoute.js";
 
 const app = express();
 
-// ✅ Connect to DB only once
+const port = process.env.PORT || 4000;
+
 await connectDB();
 
 const allowedOrigin = [
@@ -20,11 +21,10 @@ app.use(cookieParser());
 app.use(cors({ origin: allowedOrigin, credentials: true }));
 app.use(express.json());
 
-// ✅ Routes
 app.get("/", (req, res) => res.send("API is working"));
-app.use("/api/user", userRouter);
+app.use("/api/customer", userRouter);
 app.use("/api/book", bookRouter);
 
-// ❌ REMOVE app.listen()
-// ✅ Instead export the app as the default export
-export default app;
+app.listen(port, () => {
+  console.log(`server is running on port : http://localhost:${port}`);
+});
