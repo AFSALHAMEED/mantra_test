@@ -3,7 +3,8 @@ type Services = { imgUrl: string; title: string; description: string };
 export const Services = () => {
   const items: Services[] = [
     {
-      imgUrl: "https://i.imghippo.com/files/JyG4410Bqw.png",
+      imgUrl:
+        "https://nergy360.blob.core.windows.net/storage/qa/ProgramLogos/clwv3v2x.png",
       title: " Accommodation",
       description:
         "Experience luxurious comfort in our elegantly designed rooms,offering stunning views and modern amenities for a relaxing stay.",
