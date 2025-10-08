@@ -27,12 +27,12 @@ type bookValues = {
 };
 
 export const login = async (payload: { email: string; password: string }) => {
-  const data = await axios.post("/api/user/login", payload);
+  const data = await axios.post("/api/customer/login", payload);
   return data.data;
 };
 
 export const register = async (payload: FormValues) => {
-  const data = await axios.post("/api/user/register", payload);
+  const data = await axios.post("/api/customer/register", payload);
   return data.data;
 };
 
@@ -42,13 +42,11 @@ export const bookResort = async (payload: bookValues) => {
 };
 
 export const getMyBookings = async (email: { email: string }) => {
-  const data = await axios.get(
-    `/api/book/my-booking?email=${"arora74@gmail.com"}`
-  );
+  const data = await axios.get(`/api/book/my-booking?email=${email}`);
   return data.data;
 };
 
 export const logoutUser = async () => {
-  const data = await axios.get(`/api/user/logout`);
+  const data = await axios.get(`/api/customer/logout`);
   return data.data;
 };
