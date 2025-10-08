@@ -18,6 +18,7 @@ type props = {
   isOpenModal: boolean;
   state: string;
   setState: React.Dispatch<React.SetStateAction<string>>;
+  setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
   userLogin: UseMutationResult<
     any,
     Error,
@@ -29,12 +30,16 @@ type props = {
   >;
 };
 
-export const Login = ({ isOpenModal, state, userLogin }: props) => {
+export const Login = ({
+  isOpenModal,
+  state,
+  userLogin,
+  setIsOpenModal,
+}: props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm<FormValues>();
   const navigate = useNavigate();
 
@@ -56,7 +61,15 @@ export const Login = ({ isOpenModal, state, userLogin }: props) => {
 
   return (
     <div>
-      <Modal open={isOpenModal} onClose={() => {}} center showCloseIcon={true}>
+      <Modal
+        open={isOpenModal}
+        onClose={() => setIsOpenModal(false)}
+        center
+        showCloseIcon={true}
+        classNames={{
+          modal: "customModal",
+        }}
+      >
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="sm:w-[350px] w-full text-center  px-8 "
@@ -64,7 +77,7 @@ export const Login = ({ isOpenModal, state, userLogin }: props) => {
           <h1 className="text-gray-900 text-3xl mt-10 font-medium">
             {state === "login" ? "Login" : "Sign up"}
           </h1>
-          <p className="text-gray-500 text-sm mt-2">
+          <p className="text-gray-900 text-sm mt-2">
             Please sign in to continue
           </p>
 
@@ -149,7 +162,7 @@ export const Login = ({ isOpenModal, state, userLogin }: props) => {
           )}
           <button
             type="submit"
-            className="mt-2 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity"
+            className="mt-7 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity"
           >
             {state === "login" ? "Login" : "Sign up"}
           </button>
@@ -157,10 +170,10 @@ export const Login = ({ isOpenModal, state, userLogin }: props) => {
             onClick={() => {
               navigate("/signUp");
             }}
-            className="text-gray-500 text-sm mt-3 mb-11"
+            className="text-gray-900 text-sm mt-3 mb-11"
           >
             "Don't have an account?"
-            <a href="#" className="text-indigo-500 hover:underline">
+            <a href="#" className="text-gray-900 hover:underline">
               click here
             </a>
           </p>

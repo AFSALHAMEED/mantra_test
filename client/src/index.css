@@ -15,7 +15,6 @@ html {
 }
 .customModal {
   border-radius: 12px;
-  width: 100%;
   background-color: #06b6d4 !important;
   background-image: linear-gradient(
     to right,

@@ -1,6 +1,5 @@
 import { Services } from "../../../components/Services";
 import { Gallery } from "../../../components/Gallery";
-import { About } from "../../../components/About";
 import { Footer } from "../../../components/Footer";
 import { useHome } from "../hooks/useHome";
 import { Login } from "../components/Login";
@@ -37,6 +36,7 @@ export const Home = () => {
           state={state}
           setState={setState}
           userLogin={userLogin}
+          setIsOpenModal={setIsOpenModal}
         />
       )}
       {openBookModal && (
