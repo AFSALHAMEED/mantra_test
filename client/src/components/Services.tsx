@@ -1,25 +1,21 @@
-import room1 from "../assets/roomimg1.png";
-import trek from "../assets/treks.jpg";
-import spa from "../assets/spa.png";
-
 type Services = { imgUrl: string; title: string; description: string };
 
 export const Services = () => {
   const items: Services[] = [
     {
-      imgUrl: room1,
+      imgUrl: "https://i.imghippo.com/files/JyG4410Bqw.png",
       title: " Accommodation",
       description:
         "Experience luxurious comfort in our elegantly designed rooms,offering stunning views and modern amenities for a relaxing stay.",
     },
     {
-      imgUrl: trek,
+      imgUrl: "https://i.imghippo.com/files/GcXU9593jQ.jpg",
       title: " Adventures",
       description:
         "Embrace the wild side of nature through thrilling adventures that   challenge your limits and spark your spirit.",
     },
     {
-      imgUrl: spa,
+      imgUrl: "https://i.imghippo.com/files/NaU4198unQ.png",
       title: " Wellness & Spa",
       description:
         "E Rejuvenate your mind and body with our soothing spa treatments,  aromatherapy, and wellness rituals designed for complete relaxation.",
