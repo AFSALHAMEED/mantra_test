@@ -8,25 +8,23 @@ import bookRouter from "./routes/bookingRoute.js";
 
 const app = express();
 
-const port = process.env.PORT || 4000;
+// ✅ Connect to DB only once
+await connectDB();
 
 const allowedOrigin = [
   "http://localhost:5173",
   "https://green-cart-delta.vercel.app",
 ];
 
-await connectDB();
-
 app.use(cookieParser());
 app.use(cors({ origin: allowedOrigin, credentials: true }));
-
 app.use(express.json());
 
-app.get("/", (req, res) => res.send("APi is working "));
-
+// ✅ Routes
+app.get("/", (req, res) => res.send("API is working"));
 app.use("/api/user", userRouter);
 app.use("/api/book", bookRouter);
 
-app.listen(port, () => {
-  console.log(`server is running on port : http://localhost:${port}`);
-});
+// ❌ REMOVE app.listen()
+// ✅ Instead export the app as the default export
+export default app;
