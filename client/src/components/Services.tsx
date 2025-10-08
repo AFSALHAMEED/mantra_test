@@ -10,13 +10,15 @@ export const Services = () => {
         "Experience luxurious comfort in our elegantly designed rooms,offering stunning views and modern amenities for a relaxing stay.",
     },
     {
-      imgUrl: "https://i.imghippo.com/files/GcXU9593jQ.jpg",
+      imgUrl:
+        "https://nergy360.blob.core.windows.net/storage/qa/ProgramLogos/ryzpysn0.jpg",
       title: " Adventures",
       description:
         "Embrace the wild side of nature through thrilling adventures that   challenge your limits and spark your spirit.",
     },
     {
-      imgUrl: "https://i.imghippo.com/files/NaU4198unQ.png",
+      imgUrl:
+        "https://nergy360.blob.core.windows.net/storage/qa/ProgramLogos/k0wqwwb1.png",
       title: " Wellness & Spa",
       description:
         "E Rejuvenate your mind and body with our soothing spa treatments,  aromatherapy, and wellness rituals designed for complete relaxation.",
