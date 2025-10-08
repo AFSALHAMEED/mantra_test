@@ -37,6 +37,7 @@ export const BookModal = ({
 
   const checkInDate = watch("checkInDate");
   const checkOutDate = watch("checkOutDate");
+  const phone = watch("phone");
   const today = new Date().toISOString().split("T")[0];
 
   useEffect(() => {
@@ -116,7 +117,7 @@ export const BookModal = ({
                 />
               </div>
               {errors.firstName && (
-                <p className="mt-2 text-start text-red-400 pl-3">
+                <p className="mt-2 text-start text-red-800 pl-3">
                   {errors.firstName.message}
                 </p>
               )}
@@ -151,7 +152,7 @@ export const BookModal = ({
                 </div>
               </div>{" "}
               {errors.email && (
-                <p className="mt-2 text-start text-red-400 pl-3">
+                <p className="mt-2 text-start text-red-800 pl-3">
                   {errors.email.message}
                 </p>
               )}
@@ -167,11 +168,22 @@ export const BookModal = ({
                 }`}
               >
                 <input
+                  type="number"
                   {...register("phone", {
                     required: {
                       value: true,
                       message: "Phone is required",
                     },
+                    minLength: {
+                      value: 10,
+                      message: "Invalid Phone Number",
+                    },
+                    maxLength: {
+                      value: 11,
+                      message: "Invalid Phone Number",
+                    },
+                    validate: () =>
+                      !/^\d{10}$/.test(phone) || "Invalid Phone Number",
                   })}
                   aria-invalid={errors.phone ? "true" : "false"}
                   placeholder="Phone"
@@ -179,7 +191,7 @@ export const BookModal = ({
                 />
               </div>
               {errors.phone && (
-                <p className="mt-2 text-start text-red-400 pl-3">
+                <p className="mt-2 text-start text-red-800 pl-3">
                   {errors.phone.message}
                 </p>
               )}
@@ -207,7 +219,7 @@ export const BookModal = ({
                 </div>
               </div>{" "}
               {errors.resortName && (
-                <p className="mt-2 text-start text-red-400 pl-3">
+                <p className="mt-2 text-start text-red-800 pl-3">
                   {errors.resortName.message}
                 </p>
               )}
@@ -230,13 +242,14 @@ export const BookModal = ({
                       message: "Number of rooms is required",
                     },
                   })}
+                  min={1}
                   aria-invalid={errors.numberOfRooms ? "true" : "false"}
                   placeholder="No of rooms"
                   className={`border-none outline-none ring-0 `}
                 />
               </div>
               {errors.numberOfRooms && (
-                <p className="mt-2 text-start text-red-400 pl-3">
+                <p className="mt-2 text-start text-red-800 pl-3">
                   {errors.numberOfRooms.message}
                 </p>
               )}
@@ -262,6 +275,7 @@ export const BookModal = ({
                         message: "Minimum 1 guest required",
                       },
                     })}
+                    min={1}
                     aria-invalid={errors.numberOfGuests ? "true" : "false"}
                     placeholder="Guest"
                     className={`border-none outline-none ring-0 w-full`}
@@ -269,7 +283,7 @@ export const BookModal = ({
                 </div>
               </div>{" "}
               {errors.numberOfGuests && (
-                <p className="mt-2 text-start text-red-400 pl-3">
+                <p className="mt-2 text-start text-red-800 pl-3">
                   {errors.numberOfGuests.message}
                 </p>
               )}
@@ -299,7 +313,7 @@ export const BookModal = ({
                 />
               </div>
               {errors.checkInDate && (
-                <p className="mt-2 text-start text-red-400 pl-3">
+                <p className="mt-2 text-start text-red-800 pl-3">
                   {errors.checkInDate.message}
                 </p>
               )}
@@ -331,7 +345,7 @@ export const BookModal = ({
                 />
               </div>{" "}
               {errors.checkOutDate && (
-                <p className="mt-2 text-start text-red-400 pl-3">
+                <p className="mt-2 text-start text-red-800 pl-3">
                   {errors.checkOutDate.message}
                 </p>
               )}
@@ -340,13 +354,13 @@ export const BookModal = ({
           <div className="flex flex-col md:flex-row my-4 gap-4">
             <button
               type="submit"
-              className="mt-2 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity"
+              className="mt-2 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity cursor-pointer"
             >
               Book Now
             </button>
             <button
               type="button"
-              className="mt-2 w-full h-11 rounded-full text-white bg-green-500 hover:opacity-90 transition-opacity"
+              className="mt-2 w-full h-11 rounded-full text-white bg-red-400 hover:opacity-90 transition-opacity cursor-pointer"
               onClick={handleClose}
             >
               Cancel
