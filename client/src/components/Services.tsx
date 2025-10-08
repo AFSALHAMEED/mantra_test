@@ -3,22 +3,19 @@ type Services = { imgUrl: string; title: string; description: string };
 export const Services = () => {
   const items: Services[] = [
     {
-      imgUrl:
-        "https://nergy360.blob.core.windows.net/storage/qa/ProgramLogos/clwv3v2x.png",
+      imgUrl: "https://ibb.co/p6tPh3yH",
       title: " Accommodation",
       description:
         "Experience luxurious comfort in our elegantly designed rooms,offering stunning views and modern amenities for a relaxing stay.",
     },
     {
-      imgUrl:
-        "https://nergy360.blob.core.windows.net/storage/qa/ProgramLogos/ryzpysn0.jpg",
+      imgUrl: "https://ibb.co/BHmBbW6c",
       title: " Adventures",
       description:
         "Embrace the wild side of nature through thrilling adventures that   challenge your limits and spark your spirit.",
     },
     {
-      imgUrl:
-        "https://nergy360.blob.core.windows.net/storage/qa/ProgramLogos/k0wqwwb1.png",
+      imgUrl: "https://ibb.co/5ht26xR8",
       title: " Wellness & Spa",
       description:
         "E Rejuvenate your mind and body with our soothing spa treatments,  aromatherapy, and wellness rituals designed for complete relaxation.",

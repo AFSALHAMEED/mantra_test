@@ -15,7 +15,7 @@ export const HeroSection = ({
 }) => {
   return (
     <div>
-      <section className="flex flex-col  pb-48 md:pl-16 lg:pl-32 text-sm text-white max-md:px-2 bg-[url('https://nergy360.blob.core.windows.net/storage/qa/ProgramLogos/j2ipn3th.png')] bg-cover bg-center">
+      <section className="flex flex-col  pb-48 md:pl-16 lg:pl-32 text-sm text-white max-md:px-2 bg-[url('https://ibb.co/WNG6rWQY')] bg-cover bg-center">
         <Navbar
           setIsOpenModal={setIsOpenModal}
           userDetails={userDetails}
