@@ -42,7 +42,7 @@ export const bookResort = async (payload: bookValues) => {
 };
 
 export const getMyBookings = async (email: { email: string }) => {
-  const data = await axios.get(`/api/book/my-booking?email=${email}`);
+  const data = await axios.get(`/api/book/my-booking?email=${email.email}`);
   return data.data;
 };
 

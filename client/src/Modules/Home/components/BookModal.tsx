@@ -351,12 +351,14 @@ export const BookModal = ({
           </div>
           <div className="flex flex-col md:flex-row my-4 gap-4">
             <button
+              disabled={handleBooking.isPending}
               type="submit"
               className="mt-2 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity cursor-pointer"
             >
               Book Now
             </button>
             <button
+              disabled={handleBooking.isPending}
               type="button"
               className="mt-2 w-full h-11 rounded-full text-white bg-red-400 hover:opacity-90 transition-opacity cursor-pointer"
               onClick={handleClose}
