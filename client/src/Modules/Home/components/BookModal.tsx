@@ -179,11 +179,9 @@ export const BookModal = ({
                       message: "Invalid Phone Number",
                     },
                     maxLength: {
-                      value: 11,
+                      value: 10,
                       message: "Invalid Phone Number",
                     },
-                    validate: () =>
-                      !/^\d{10}$/.test(phone) || "Invalid Phone Number",
                   })}
                   aria-invalid={errors.phone ? "true" : "false"}
                   placeholder="Phone"
